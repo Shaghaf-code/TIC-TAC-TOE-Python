@@ -23,12 +23,12 @@ CROSS_COLOR = (66, 66, 66)
 RED_COLOR = (255, 0, 0)
 
 # Initialize the display
-screen = pygame.display.set_mode((WIDTH, HEIGHT + 100))
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Tic Tac Toe by Shaghaf')
 
 # Font for text
 splash_font = pygame.font.SysFont(None, 80)
-winner_font = pygame.font.SysFont(None, 30)
+winner_font = pygame.font.SysFont(None, 40)
 
 # Board setup
 board = [[None] * BOARD_COLS for _ in range(BOARD_ROWS)]
@@ -57,7 +57,7 @@ def draw_lines():
 def draw_winner_text():
     if winner_text:
         winner_surface = winner_font.render(winner_text, True, RED_COLOR)
-        screen.blit(winner_surface, (WIDTH // 2 - winner_surface.get_width() // 2, HEIGHT + 10))
+        screen.blit(winner_surface, (WIDTH // 2 - winner_surface.get_width() // 2, HEIGHT // 2 + 50))
 
 # Function to draw X or O
 def draw_figures():
@@ -148,8 +148,6 @@ while True:
                 if winner is not None:
                     game_over = True
                     set_winner_text(winner)
-                    pygame.time.wait(2000)
-                    restart()
 
         elif game_over and event.type == pygame.MOUSEBUTTONDOWN:
             restart()
